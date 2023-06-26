@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
+const Profile = require('../../models/profile');
 
 module.exports = {
   create,
@@ -17,6 +18,7 @@ async function create(req, res) {
   try {
     // Add the user to the db
     const user = await User.create(req.body);
+    const profile = await Profile.create({ user: user._id })
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
