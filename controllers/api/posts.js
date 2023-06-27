@@ -1,10 +1,15 @@
 const Post = require('../../models/post');
+const Comment = require('../../models/comment');
 const Profile = require('../../models/profile');
 
 module.exports = {
   create,
   getPost,
   index,
+  isUser,
+  deletePost,
+  createComment,
+  getPostComments,
 };
 
 async function create(req, res) {
@@ -24,4 +29,30 @@ async function index(req, res) {
   res.json(posts);
 }
 
+async function deletePost(req, res) {
+  try {
+    await Post.findByIdAndDelete(req.params.id)
+    res.status(200).json({success: true, message: 'post deleted'});
+  } catch (error) {
+    res.status(500).json({success: false, message: 'failed to delete post'});
+  }
+}
+
+async function createComment(req, res) {
+  const profile = await Profile.findOne({ user: req.user._id });
+  const comment = await Comment.create({ text: req.body.text, post: req.params.id, profile: profile._id });
+  res.json(comment);
+}
+
+async function getPostComments(req, res) {
+  const comments = await Comment.find({post: req.params.id});
+  res.json(comments);
+}
+
 /*--- Helper Functions --*/
+async function isUser(req, res) {
+  const post = await Post.findById(req.params.id);
+  const profile = await Profile.findOne({ user: req.user._id })
+  const isUser = post.profile.toString() === profile._id.toString();
+  res.json(isUser);
+}

@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import PostForm from "../../components/PostForm/PostForm";
 
 export default function NewPostPage({ post, setPost }) {
-  const [postCreated, setPostCreated] = useState(false)
-  const [postId, setPostId] = useState('');
+  const [postCreated, setPostCreated] = useState(false);
+  const [postId, setPostId] = useState("");
 
   useEffect(() => {
     if (postCreated) {
@@ -12,11 +12,11 @@ export default function NewPostPage({ post, setPost }) {
 
       // Listen for navigation events to reset postCreated
       const removeListener = () => {
-        window.removeEventListener('popstate', resetPostCreated);
+        window.removeEventListener("popstate", resetPostCreated);
       };
 
       // Add a listener for the back/forward navigation
-      window.addEventListener('popstate', resetPostCreated);
+      window.addEventListener("popstate", resetPostCreated);
 
       // Clean up the listener on unmount or navigation
       return removeListener;
@@ -26,11 +26,16 @@ export default function NewPostPage({ post, setPost }) {
   return (
     <>
       <h1>NewPostPage</h1>
-      { postCreated ?
-        <Navigate to={`/posts/${postId}`} replace /> 
-      : 
-        <PostForm post={post} setPost={setPost} setPostCreated={setPostCreated} setPostId={setPostId} />
-      }
+      {postCreated ? (
+        <Navigate to={`/posts/${postId}`} replace />
+      ) : (
+        <PostForm
+          post={post}
+          setPost={setPost}
+          setPostCreated={setPostCreated}
+          setPostId={setPostId}
+        />
+      )}
     </>
   );
 }

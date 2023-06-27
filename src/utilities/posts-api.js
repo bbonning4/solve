@@ -12,3 +12,19 @@ export async function getPost(id) {
 export async function getAll() {
   return sendRequest(`${BASE_URL}`);
 }
+
+export async function isUser(postId) {
+  return sendRequest(`${BASE_URL}/${postId}/check`);
+}
+
+export async function deletePost(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
+}
+
+export async function getPostComments(postId) {
+  return sendRequest(`${BASE_URL}/${postId}/comments`);
+}
+
+export async function createComment(postId, comment) {
+  return sendRequest(`${BASE_URL}/${postId}/comments/new`, 'POST', comment);
+}

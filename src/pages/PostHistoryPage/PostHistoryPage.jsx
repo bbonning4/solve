@@ -14,10 +14,14 @@ export default function PostHistoryPage() {
   }, []);
 
   const postList = posts.map((post) => (
-    <PostListItem
-      text={post.text}
-      updatedAt={new Date(post.updatedAt).toLocaleDateString()}
-    />
+    <div key={post._id}>
+      <PostListItem
+        postId={post._id}
+        text={post.text}
+        updatedAt={new Date(post.updatedAt).toLocaleDateString()}
+      />
+      <div className="divider"></div>
+    </div>
   ));
 
   return (
