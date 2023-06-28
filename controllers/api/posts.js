@@ -1,6 +1,7 @@
 const Post = require('../../models/post');
 const Comment = require('../../models/comment');
 const Profile = require('../../models/profile');
+const uploadFile = require('../../config/upload-file');
 
 module.exports = {
   create,
@@ -14,12 +15,20 @@ module.exports = {
 
 async function create(req, res) {
   const profile = await Profile.findOne({ user: req.user._id })
-  const post = await Post.create({ text: req.body.text, profile: profile._id })
-  res.json(post);
+  if (req.file) {
+    console.log(req.file);
+    const imageURL = await uploadFile(req.file)
+    const post = await Post.create({ text: req.body.text, profile: profile._id, image: imageURL })
+    res.json(post);
+  } else {
+    const post = await Post.create({ text: req.body.text, profile: profile._id})
+    res.json(post);
+  }
 }
 
 async function getPost(req, res) {
   const post = await Post.findById(req.params.id)
+  console.log(post);
   res.json(post);
 }
 

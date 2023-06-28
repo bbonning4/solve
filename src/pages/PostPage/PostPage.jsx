@@ -54,6 +54,7 @@ export default function PostPage({ post, setPost }) {
           posted on {new Date(post.updatedAt).toLocaleDateString()}
         </p>
         <div className="divider"></div>
+        <img src={post.image} alt="image of problem" />
         <p className="text-left">{post.text}</p>
       </div>
       <div className="divider"></div>

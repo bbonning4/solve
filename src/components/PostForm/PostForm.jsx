@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import * as postsAPI from "../../utilities/posts-api";
 
 export default function PostForm({ post, setPost, setPostCreated, setPostId }) {
-  const [newPost, setNewPost] = useState({text: ""})
+  const [newPost, setNewPost] = useState({ text: "" });
   const [error, setError] = useState("");
+  const fileInputRef = useRef();
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    const formData = new FormData();
+    formData.append('text', newPost.text);
+    formData.append('image', fileInputRef.current.files[0]);
+
     try {
-      const submittedPost = await postsAPI.createPost(newPost);
-      setNewPost({text: ""});
-      setPostId(submittedPost._id)
-      setPost({})
+      const submittedPost = await postsAPI.createPost(formData);
+      setNewPost({ text: "" });
+      setPostId(submittedPost._id);
+      setPost({});
       setPostCreated(true);
     } catch {
       setError("Failed to create post.");
@@ -31,6 +36,13 @@ export default function PostForm({ post, setPost, setPostCreated, setPostId }) {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+          <input
+            className="file-input-bordered file-input-info file-input w-full max-w-xs"
+            type="file"
+            ref={fileInputRef}
+            name="image"
+            accept="image/*"
+          />
           <label>Text</label>
           <textarea
             name="text"

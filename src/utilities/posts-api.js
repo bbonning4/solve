@@ -1,8 +1,8 @@
 import sendRequest from "./send-request";
 const BASE_URL = '/api/posts';
 
-export async function createPost(post) {
-  return sendRequest(`${BASE_URL}/new`, 'POST', post);
+export async function createPost(formData) {
+  return sendRequest(`${BASE_URL}/new`, 'POST', formData, true);
 }
 
 export async function getPost(id) {
