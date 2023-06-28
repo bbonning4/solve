@@ -2,6 +2,7 @@ const Post = require('../../models/post');
 const Comment = require('../../models/comment');
 const Profile = require('../../models/profile');
 const uploadFile = require('../../config/upload-file');
+const deleteFile = require('../../config/delete-file');
 
 module.exports = {
   create,
@@ -16,7 +17,6 @@ module.exports = {
 async function create(req, res) {
   const profile = await Profile.findOne({ user: req.user._id })
   if (req.file) {
-    console.log(req.file);
     const imageURL = await uploadFile(req.file)
     const post = await Post.create({ text: req.body.text, profile: profile._id, image: imageURL })
     res.json(post);
@@ -39,6 +39,11 @@ async function index(req, res) {
 }
 
 async function deletePost(req, res) {
+  const post = await Post.findById(req.params.id);
+  if (post.image) {
+    const imageURL = post.image;
+    await deleteFile(imageURL);
+  }
   try {
     await Post.findByIdAndDelete(req.params.id)
     res.status(200).json({success: true, message: 'post deleted'});
