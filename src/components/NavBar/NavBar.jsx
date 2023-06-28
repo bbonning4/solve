@@ -52,7 +52,7 @@ export default function NavBar({ user, setUser }) {
               <Link to="/posts">Posts</Link>
             </li>
             <li>
-              <a>Comments</a>
+              <Link to="/comments">Comments</Link>
             </li>
             <li>
               <a onClick={handleLogOut}>Logout</a>

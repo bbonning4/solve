@@ -8,6 +8,7 @@ import HomePage from '../HomePage/HomePage';
 import NewPostPage from '../NewPostPage/NewPostPage';
 import PostPage from '../PostPage/PostPage';
 import PostHistoryPage from '../PostHistoryPage/PostHistoryPage';
+import CommentHistoryPage from '../CommentHistoryPage/CommentHistoryPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -34,6 +35,7 @@ export default function App() {
               <Route path="/posts" element={<PostHistoryPage />} />
               <Route path="/posts/new" element={<NewPostPage post={post} setPost={setPost} />} />
               <Route path="/posts/:id" element={<PostPage post={post} setPost={setPost} />} />
+              <Route path="/comments" element={<CommentHistoryPage />} />
             </Routes>
           </>
           :
