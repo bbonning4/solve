@@ -1,4 +1,5 @@
 const mathpix = require('../../config/process-image');
+const openAI = require('../../config/openai-solve');
 
 module.exports = {
   processImage,
@@ -6,5 +7,6 @@ module.exports = {
 
 async function processImage(req, res) {
     const asciimath = await mathpix(req.body.image);
-    console.log(asciimath);
+    const aiResponse = await openAI(asciimath);
+    console.log(aiResponse.content);
 }
