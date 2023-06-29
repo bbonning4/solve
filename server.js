@@ -28,6 +28,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/profiles', require('./routes/api/profiles'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/comments', require('./routes/api/comments'));
+app.use('/api/ai', require('./routes/api/ai'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
