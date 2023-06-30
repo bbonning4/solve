@@ -8,5 +8,5 @@ module.exports = {
 async function processImage(req, res) {
     const asciimath = await mathpix(req.body.image);
     const aiResponse = await openAI(asciimath);
-    console.log(aiResponse.content);
+    res.json({ result: aiResponse.content});
 }

@@ -40,6 +40,7 @@ async function index(req, res) {
 
 async function deletePost(req, res) {
   const post = await Post.findById(req.params.id);
+  const comments = await Comment.deleteMany({ post: post._id })
   if (post.image) {
     const imageURL = post.image;
     await deleteFile(imageURL);
