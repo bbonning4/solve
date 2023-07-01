@@ -15,10 +15,15 @@ module.exports = {
 };
 
 async function create(req, res) {
-  const profile = await Profile.findOne({ user: req.user._id })
+  const profile = await Profile.findOne({ user: req.user._id });
+
   if (req.file) {
-    const imageURL = await uploadFile(req.file)
-    const post = await Post.create({ text: req.body.text, profile: profile._id, image: imageURL })
+    const imageURL = await uploadFile(req.file);
+    const post = await Post.create({ text: req.body.text, profile: profile._id, image: imageURL });
+    res.json(post);
+  } else if (req.body.base64) {
+    const imageURL = await uploadFile(req.body.base64);
+    const post = await Post.create({ text: req.body.text, profile: profile._id, image: imageURL, mathpix: req.body.mathpix});
     res.json(post);
   } else {
     const post = await Post.create({ text: req.body.text, profile: profile._id})
@@ -28,7 +33,6 @@ async function create(req, res) {
 
 async function getPost(req, res) {
   const post = await Post.findById(req.params.id)
-  console.log(post);
   res.json(post);
 }
 

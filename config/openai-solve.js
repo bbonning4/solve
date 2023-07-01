@@ -16,7 +16,6 @@ module.exports = async function (asciimath) {
           ],
     })
     return completion.data.choices[0].message;
-    // return json({ result: completion.data.choices[0].text });
   } catch(error) {
     if (error.response) {
         console.error(error.response.status, error.response.data);

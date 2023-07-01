@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import * as postsAPI from "../../utilities/posts-api";
 import PostListItem from "../../components/PostListItem/PostListItem";
 
@@ -26,7 +27,13 @@ export default function PostHistoryPage() {
 
   return (
     <>
-      <h1>PostHistoryPage</h1>
+      <div className="card flex flex-col items-center justify-center">
+        <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
+          <Link to="/posts/new" className="btn bg-primary">
+            New Post
+          </Link>
+        </div>
+      </div>
       {posts.length ? postList : <p>No Posts, yet.</p>}
     </>
   );

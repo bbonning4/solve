@@ -21,6 +21,9 @@ const postSchema = new Schema(
     text: {
       type: String,
     },
+    mathpix: {
+      type: String,
+    }
   },
   {
     timestamps: true,

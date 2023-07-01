@@ -1,7 +1,15 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import * as postsAPI from "../../utilities/posts-api";
 
-export default function PostForm({ post, setPost, setPostCreated, setPostId }) {
+export default function PostForm({
+  post,
+  setPost,
+  setPostCreated,
+  setPostId,
+  base64,
+  mathpix,
+  result,
+}) {
   const [newPost, setNewPost] = useState({ text: "" });
   const [error, setError] = useState("");
   const fileInputRef = useRef();
@@ -9,8 +17,13 @@ export default function PostForm({ post, setPost, setPostCreated, setPostId }) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     const formData = new FormData();
-    formData.append('text', newPost.text);
-    formData.append('image', fileInputRef.current.files[0]);
+    formData.append("text", newPost.text);
+    formData.append("mathpix", mathpix);
+    if (base64) {
+      formData.append("base64", base64);
+    } else {
+      formData.append("image", fileInputRef.current.files[0]);
+    }
 
     try {
       const submittedPost = await postsAPI.createPost(formData);
@@ -36,13 +49,17 @@ export default function PostForm({ post, setPost, setPostCreated, setPostId }) {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
-          <input
-            className="file-input-bordered file-input-info file-input w-full max-w-xs"
-            type="file"
-            ref={fileInputRef}
-            name="image"
-            accept="image/*"
-          />
+          {base64 ? (
+            <img src={base64} alt="base64 image" />
+          ) : (
+            <input
+              className="file-input-bordered file-input-info file-input w-full max-w-xs"
+              type="file"
+              ref={fileInputRef}
+              name="image"
+              accept="image/*"
+            />
+          )}
           <label>Text</label>
           <textarea
             name="text"
