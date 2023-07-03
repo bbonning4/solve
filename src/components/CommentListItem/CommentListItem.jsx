@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function CommentListItem({ text, updatedAt }) {
   return (
     <div className="flex justify-between">

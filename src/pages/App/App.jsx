@@ -10,6 +10,7 @@ import NewPostPage from '../NewPostPage/NewPostPage';
 import PostPage from '../PostPage/PostPage';
 import PostHistoryPage from '../PostHistoryPage/PostHistoryPage';
 import CommentHistoryPage from '../CommentHistoryPage/CommentHistoryPage';
+import SearchResultPage from '../SearchResultPage/SearchResultPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -37,6 +38,7 @@ export default function App() {
               <Route path="/posts/new" element={<NewPostPage post={post} setPost={setPost} />} />
               <Route path="/posts/:id" element={<PostPage post={post} setPost={setPost} />} />
               <Route path="/comments" element={<CommentHistoryPage />} />
+              <Route path="/search" element ={<SearchResultPage />} />
             </Routes>
           </MathJaxContext>
           :

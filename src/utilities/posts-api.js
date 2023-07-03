@@ -28,3 +28,7 @@ export async function getPostComments(postId) {
 export async function createComment(postId, comment) {
   return sendRequest(`${BASE_URL}/${postId}/comments/new`, 'POST', comment);
 }
+
+export async function search(query) {
+  return sendRequest(`${BASE_URL}/search?q=${encodeURIComponent(query)}`)
+}

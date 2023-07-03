@@ -13,10 +13,13 @@ router.post('/:id/comments/new', postsCtrl.createComment);
 
 // GET /api/posts
 router.get('/', postsCtrl.index);
+// GET /api/posts/search
+router.get('/search?:q', postsCtrl.search);
 // GET /api/posts/:id
 router.get('/:id', postsCtrl.getPost);
 // GET api/posts/:id/comments
 router.get('/:id/comments', postsCtrl.getPostComments);
+
 
 // check post's user
 router.get('/:id/check', postsCtrl.isUser);

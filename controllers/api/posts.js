@@ -3,6 +3,7 @@ const Comment = require('../../models/comment');
 const Profile = require('../../models/profile');
 const uploadFile = require('../../config/upload-file');
 const deleteFile = require('../../config/delete-file');
+const { query } = require('express');
 
 module.exports = {
   create,
@@ -12,6 +13,7 @@ module.exports = {
   deletePost,
   createComment,
   getPostComments,
+  search
 };
 
 async function create(req, res) {
@@ -66,6 +68,22 @@ async function createComment(req, res) {
 async function getPostComments(req, res) {
   const comments = await Comment.find({post: req.params.id});
   res.json(comments);
+}
+
+async function search(req, res) {
+  const query = req.query.q;
+  try {
+    const searchResults = await Post.find({
+      $or: [
+        {mathpix: {$regex: query, $options: 'i'}},
+        {text: {$regex: query, $options: 'i'}}
+      ]
+    })
+    res.json(searchResults);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while searching.' });
+  }
 }
 
 /*--- Helper Functions --*/
