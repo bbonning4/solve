@@ -69,7 +69,6 @@ export default function PostForm({
               name="text"
               value={newPost.text}
               onChange={handleChange}
-              required
             />
           </MathJax>
           <button className="btn" type="submit">

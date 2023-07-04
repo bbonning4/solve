@@ -12,6 +12,7 @@ export default function SearchResultPage() {
           image={post.image ? post.image : null}
           text={post.text}
           updatedAt={new Date(post.updatedAt).toLocaleDateString()}
+          answered={post.answered}
         />
       </Link>
       <div className="divider"></div>

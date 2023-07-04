@@ -20,6 +20,7 @@ export default function PostHistoryPage() {
         postId={post._id}
         text={post.text}
         updatedAt={new Date(post.updatedAt).toLocaleDateString()}
+        answered={post.answered}
       />
       <div className="divider"></div>
     </div>
