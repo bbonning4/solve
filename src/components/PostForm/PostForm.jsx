@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import * as postsAPI from "../../utilities/posts-api";
+import { MathJax } from "better-react-mathjax";
 
 export default function PostForm({
   post,
@@ -9,8 +10,9 @@ export default function PostForm({
   base64,
   mathpix,
   result,
+  answered,
 }) {
-  const [newPost, setNewPost] = useState({ text: "" });
+  const [newPost, setNewPost] = useState({ text: answered ? result : "" });
   const [error, setError] = useState("");
   const fileInputRef = useRef();
 
@@ -19,6 +21,7 @@ export default function PostForm({
     const formData = new FormData();
     formData.append("text", newPost.text);
     formData.append("mathpix", mathpix);
+    formData.append("answered", answered ? answered : false);
     if (base64) {
       formData.append("base64", base64);
     } else {
@@ -61,12 +64,14 @@ export default function PostForm({
             />
           )}
           <label>Text</label>
-          <textarea
-            name="text"
-            value={newPost.text}
-            onChange={handleChange}
-            required
-          />
+          <MathJax>
+            <textarea
+              name="text"
+              value={newPost.text}
+              onChange={handleChange}
+              required
+            />
+          </MathJax>
           <button className="btn" type="submit">
             Create Post
           </button>

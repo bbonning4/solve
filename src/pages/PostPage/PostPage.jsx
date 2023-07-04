@@ -2,6 +2,7 @@ import * as postsAPI from "../../utilities/posts-api";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentSection from "../../components/CommentSection/CommentSection";
+import { MathJax } from "better-react-mathjax";
 
 export default function PostPage({ post, setPost }) {
   const { id } = useParams();
@@ -55,7 +56,9 @@ export default function PostPage({ post, setPost }) {
         </p>
         <div className="divider"></div>
         <img src={post.image} alt="image of problem" />
-        <p className="text-left">{post.text}</p>
+        <p className="text-left">
+          <MathJax>{post.text}</MathJax>
+        </p>
       </div>
       <div className="divider"></div>
       <CommentSection postId={id} />

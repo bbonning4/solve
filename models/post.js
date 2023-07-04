@@ -23,11 +23,25 @@ const postSchema = new Schema(
     },
     mathpix: {
       type: String,
+    },
+    answered: {
+      type: Boolean,
+      default: false
     }
   },
   {
     timestamps: true,
   }
 );
+
+postSchema.methods.updateAnswer = async function() {
+  const post = this;
+  if (post.answered) {
+    post.answered = false;
+  } else {
+    post.answered = true;
+  }
+  return post.save();
+}
 
 module.exports = mongoose.model("Post", postSchema);

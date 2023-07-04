@@ -16,14 +16,24 @@ const commentSchema = new Schema(
       type: String,
       required: true,
     },
-    likes: {
-      type: Number,
-      default: 0,
-    },
+    isAnswer: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,
   }
 );
+
+commentSchema.methods.updateAnswer = async function() {
+  const comment = this;
+  if (comment.isAnswer) {
+    comment.isAnswer = false;
+  } else {
+    comment.isAnswer = true;
+  }
+  return comment.save();
+}
 
 module.exports = mongoose.model("Comment", commentSchema);

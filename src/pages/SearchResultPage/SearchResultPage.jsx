@@ -24,7 +24,7 @@ export default function SearchResultPage() {
         <h1>Search Results</h1>
         <div className="divider"></div>
       </div>
-      {results ? resultsList : <p>No results found.</p>}
+      {results.length ? resultsList : <p>No results found.</p>}
     </>
   );
 }

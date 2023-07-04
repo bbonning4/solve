@@ -29,7 +29,12 @@ export default function HomePage() {
 
   function handlePostClick() {
     navigate("/posts/new", {
-      state: { base64: previewImage, mathpix: mathpix, result: result },
+      state: { base64: previewImage, mathpix: mathpix, result: result, answered: false },
+    });
+  }
+  function handleAnsweredPostClick() {
+    navigate("/posts/new", {
+      state: { base64: previewImage, mathpix: mathpix, result: result, answered: true },
     });
   }
 
@@ -60,6 +65,13 @@ export default function HomePage() {
                 Post
               </button>{" "}
               your image for others to answer!
+            </div>
+            <div>
+              <p>OR</p>
+              <button className="btn bg-primary" onClick={handleAnsweredPostClick}>
+                Post
+              </button>{" "}
+              your answer!
             </div>
           </div>
         )

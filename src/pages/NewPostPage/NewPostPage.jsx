@@ -39,6 +39,7 @@ export default function NewPostPage({ post, setPost }) {
           base64={state ? state.base64 : null}
           mathpix={state ? state.mathpix : null}
           result={state ? state.result : null}
+          answered={state ? state.answered : null}
         />
       )}
     </>
