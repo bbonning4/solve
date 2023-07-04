@@ -8,4 +8,9 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // GET /api/comments
 router.get('/', commentsCtrl.index);
 
+// PUT /api/comments/:id/mark
+router.put('/:id/mark', commentsCtrl.markAnswer);
+// PUT /api/comments/:id/unmark
+router.put('/:id/unmark', commentsCtrl.unmarkAnswer);
+
 module.exports = router;

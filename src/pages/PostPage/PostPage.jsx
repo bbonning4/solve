@@ -7,6 +7,7 @@ import { MathJax } from "better-react-mathjax";
 export default function PostPage({ post, setPost }) {
   const { id } = useParams();
   const [isProfile, setIsProfile] = useState(false);
+  const [updated, setUpdated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(function () {
@@ -20,7 +21,7 @@ export default function PostPage({ post, setPost }) {
     }
     getPost();
     checkUser();
-  }, []);
+  }, [updated]);
 
   async function handleDelete() {
     const deleted = await postsAPI.deletePost(id);
@@ -63,7 +64,7 @@ export default function PostPage({ post, setPost }) {
         </div>
       </div>
       <div className="divider"></div>
-      <CommentSection postId={id} />
+      <CommentSection postId={id} isProfile={isProfile} updated={updated} setUpdated={setUpdated} />
     </div>
   );
 }

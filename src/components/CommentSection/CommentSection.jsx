@@ -5,7 +5,7 @@ import CommentListItem from "../CommentListItem/CommentListItem";
 import * as commentsAPI from "../../utilities/comments-api";
 import * as postsAPI from "../../utilities/posts-api";
 
-export default function CommentSection({ postId }) {
+export default function CommentSection({ postId, isProfile, updated, setUpdated }) {
   const [comments, setComments] = useState([]);
 
   useEffect(function () {
@@ -14,13 +14,15 @@ export default function CommentSection({ postId }) {
       setComments(allComments);
     }
     getPostComments();
-  }, []);
+  }, [updated]);
 
   const commentList = comments.map((comment) => (
     <div key={comment._id}>
       <CommentListItem
-        text={comment.text}
-        updatedAt={new Date(comment.updatedAt).toLocaleDateString()}
+        comment={comment}
+        isProfile={isProfile}
+        updated={updated}
+        setUpdated={setUpdated}
       />
       <div className="divider"></div>
     </div>
