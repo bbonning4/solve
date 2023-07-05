@@ -14,8 +14,8 @@ export default function CommentHistoryPage() {
     getAllComments();
   }, []);
 
-  const commentsList = comments.map((comment) => (
-    <div key={comment._id}>
+  const commentsList = comments.map((comment, index) => (
+    <div key={comment._id} className={`${index === 0 ? 'pt-4' : ''}`}>
       <Link to={`/posts/${comment.post}`}>
         <CommentListItem
           comment={comment}

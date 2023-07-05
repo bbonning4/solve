@@ -19,9 +19,7 @@ export default function CommentListItem({
   }
 
   return (
-    <div
-      className={`flex justify-between ${comment.isAnswer ? "bg-neutral" : ""}`}
-    >
+    <div className={`flex justify-between ${comment.isAnswer ? 'bg-neutral' : ''} p-4`}>
       {isProfile && (
         <div className="dropdown-start dropdown float-right">
           <label tabIndex={0} className="btn m-1">
@@ -44,13 +42,12 @@ export default function CommentListItem({
           </ul>
         </div>
       )}
-
-      <p className="text-left">
+      <div className="text-left">
         <MathJax>{comment.text}</MathJax>
-      </p>
-      <h1 className="text-right">
+      </div>
+      <div className="text-right">
         {new Date(comment.updatedAt).toLocaleDateString()}
-      </h1>
+      </div>
     </div>
   );
 }

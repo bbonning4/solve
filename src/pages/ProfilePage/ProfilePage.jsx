@@ -46,29 +46,43 @@ export default function ProfilePage() {
   }
 
   return (
-    <>
-      <form onSubmit={handleUpdateName}>
-        <p>Hello, {name}.</p>
-        {/* <p>Posts: {profile.posts.length}</p>
-        <p>Comments: {profile.comments.length}</p> */}
-        {/* <label>Edit username: </label>
-        <input name="name" type="text" placeholder="New username" className="input input-bordered w-full max-w-xs" required />
-        <button type="submit" className="btn">Update Username</button> */}
-      </form>
-      <form onSubmit={handleUpdateAvatar}>
-        <input type="file" accept="image/*" name="image" ref={fileInputRef} onChange={handleImageInput} />
-        {previewImage ? 
-        <div>
-            <img src={previewImage} alt="image preview" />
-            <button type="submit" className="btn">Update Avatar</button> 
+    <div className="flex h-screen flex-col">
+      <div className="card flex flex-col items-center justify-center">
+        <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
+          <h1>
+            Hello, {name}.
+          </h1>
+          <h1>
+            To update your avatar, choose a new image below.
+          </h1>
         </div>
-        :
-        <div>
-            <label>Current avatar:</label>
-            <img src={profile.avatar} alt="user avatar" className="max-w-sm max-h-96" />
+      </div>
+      <div className="flex items-center justify-center p-8">
+        <div className="flex flex-col items-center">
+          <form onSubmit={handleUpdateAvatar}>
+            <div className="flex justify-center">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageInput}
+                className="file-input file-input-bordered file-input-success w-full"
+              />
+            </div>
+            {previewImage && <img src={previewImage} alt="image preview" />}
+            {previewImage && (
+              <button type="submit" className="btn-primary btn">
+                Update Avatar
+              </button>
+            )}
+            {!previewImage && (
+              <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
+                <label>Current avatar:</label>
+                <img src={profile.avatar} alt="user avatar" className="max-w-sm max-h-96" />
+              </div>
+            )}
+          </form>
         </div>
-        }
-      </form>
-    </>
+      </div>
+    </div>
   );
 }

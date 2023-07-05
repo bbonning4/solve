@@ -7,7 +7,7 @@ export default function PostListItem({ postId, text, updatedAt, answered }) {
       <div
         className={`flex ${
           answered ? "bg-neutral" : "bg-base-100"
-        } justify-between`}
+        } justify-between p-4`}
       >
         <p className="text-left">
           <MathJax>{text.length ?  text  : "[No Text]"}</MathJax>

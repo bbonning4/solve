@@ -14,8 +14,8 @@ export default function PostHistoryPage() {
     getAllPosts();
   }, []);
 
-  const postList = posts.map((post) => (
-    <div key={post._id}>
+  const postList = posts.map((post, index) => (
+    <div key={post._id} className={index === 0 ? 'pt-4' : ''}>
       <PostListItem
         postId={post._id}
         text={post.text}
@@ -28,14 +28,14 @@ export default function PostHistoryPage() {
 
   return (
     <>
-      <div className="card flex flex-col items-center justify-center">
-        <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
-          <Link to="/posts/new" className="btn bg-primary">
-            New Post
-          </Link>
-        </div>
+    <div className="card flex flex-col items-center justify-center">
+      <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
+        <Link to="/posts/new" className="btn bg-primary">
+          New Post
+        </Link>
       </div>
-      {posts.length ? postList : <p>No Posts, yet.</p>}
+    </div>
+    {posts.length ? postList : <p>No Posts, yet.</p>}
     </>
   );
 }
