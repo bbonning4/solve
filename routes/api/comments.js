@@ -6,11 +6,11 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // All paths start with '/api/comments'
 
 // GET /api/comments
-router.get('/', commentsCtrl.index);
+router.get('/', ensureLoggedIn, commentsCtrl.index);
 
 // PUT /api/comments/:id/mark
-router.put('/:id/mark', commentsCtrl.markAnswer);
+router.put('/:id/mark', ensureLoggedIn, commentsCtrl.markAnswer);
 // PUT /api/comments/:id/unmark
-router.put('/:id/unmark', commentsCtrl.unmarkAnswer);
+router.put('/:id/unmark', ensureLoggedIn, commentsCtrl.unmarkAnswer);
 
 module.exports = router;

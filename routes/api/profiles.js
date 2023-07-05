@@ -7,12 +7,12 @@ const upload = require("multer")();
 // All paths start with '/api/profiles'
 
 // GET /api/profiles
-router.get('/', profilesCtrl.getProfile);
+router.get('/', ensureLoggedIn, profilesCtrl.getProfile);
 // GET /api/profiles/username
-router.get('/username', profilesCtrl.getName);
+router.get('/username', ensureLoggedIn, profilesCtrl.getName);
 
 // PUT /api/profiles/avatar
-router.put('/avatar', upload.single('image'), profilesCtrl.updateAvatar);
+router.put('/avatar', upload.single('image'), ensureLoggedIn, profilesCtrl.updateAvatar);
 
 
 module.exports = router;

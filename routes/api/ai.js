@@ -3,6 +3,6 @@ const router = express.Router();
 const aiCtrl = require("../../controllers/api/ai");
 const ensureLoggedIn = require("../../config/ensureLoggedIn");
 
-router.post("/mathpix", aiCtrl.processImage);
+router.post("/mathpix", ensureLoggedIn, aiCtrl.processImage);
 
 module.exports = router;

@@ -24,6 +24,11 @@ Project planning was done through [Trello](https://trello.com/b/QrQSdAcH/solve).
 View the deployed version of [solve.](https://solve-app-fbb31bf6cc48.herokuapp.com/)
 
 
+## Unsolved Problems
+
+- Methods to prevent malicious users from abusing API
+
+
 ## Future Enhancements
 
 - Upgrade AI model (GPT4)
