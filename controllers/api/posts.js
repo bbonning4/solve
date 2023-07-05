@@ -3,7 +3,6 @@ const Comment = require("../../models/comment");
 const Profile = require("../../models/profile");
 const uploadFile = require("../../config/upload-file");
 const deleteFile = require("../../config/delete-file");
-const { query } = require("express");
 
 module.exports = {
   create,

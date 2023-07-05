@@ -11,6 +11,7 @@ import PostPage from '../PostPage/PostPage';
 import PostHistoryPage from '../PostHistoryPage/PostHistoryPage';
 import CommentHistoryPage from '../CommentHistoryPage/CommentHistoryPage';
 import SearchResultPage from '../SearchResultPage/SearchResultPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -39,6 +40,7 @@ export default function App() {
               <Route path="/posts/:id" element={<PostPage post={post} setPost={setPost} />} />
               <Route path="/comments" element={<CommentHistoryPage />} />
               <Route path="/search" element ={<SearchResultPage />} />
+              <Route path="/profile" element ={<ProfilePage />} />
             </Routes>
           </MathJaxContext>
           :
