@@ -11,8 +11,7 @@ module.exports = async function (asciimath) {
     const completion = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [
-            // { role: "system", content: "You are a user" },
-            { role: "user", content: `Solve this problem, no explanations (if unable, respond with "Can't solve."): ${asciimath}` },
+            { role: "user", content: `Solve this problem, briefly explaining solution (if unable, respond with "Can't solve."): ${asciimath}` },
           ],
     })
     return completion.data.choices[0].message;
