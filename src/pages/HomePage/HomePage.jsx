@@ -101,6 +101,7 @@ export default function HomePage() {
           result && (
             <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
               <MathJax>Answer: {result}</MathJax>
+              <br />
               <div>
                 <p>Don't like this answer?</p>
                 <button className="btn-primary btn" onClick={handlePostClick}>
@@ -114,9 +115,8 @@ export default function HomePage() {
                   className="btn-primary btn"
                   onClick={handleAnsweredPostClick}
                 >
-                  Post
-                </button>{" "}
-                your answer!
+                  Post your answer!
+                </button>
               </div>
             </div>
           )

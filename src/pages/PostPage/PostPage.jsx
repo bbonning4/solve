@@ -58,6 +58,7 @@ export default function PostPage({ post, setPost }) {
         <div className="divider"></div>
         <div className={`flex flex-col items-center justify-center ${post.answered ? 'bg-neutral' : ''} p-4`}>
           <img src={post.image} alt="image of problem" />
+          <br />
           <p className="text-left">
             <MathJax>{post.text}</MathJax>
           </p>

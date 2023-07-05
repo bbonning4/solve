@@ -34,7 +34,7 @@ export default function NavBar({ user, setUser }) {
   return (
     <div className="navbar bg-base-200">
       <div className="flex-1">
-        <Link to="/" className="btn-ghost btn text-xl normal-case">solve</Link>
+        <Link to="/" className="btn-ghost btn text-xl normal-case">solve.</Link>
       </div>
       <div className="flex-none gap-2">
         <div className="form-control">
