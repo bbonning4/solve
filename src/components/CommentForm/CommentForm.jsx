@@ -18,15 +18,16 @@ export default function CommentForm({ postId, comments, setComments }) {
   }
 
   return (
-    <form className="flex" onSubmit={handleSubmit}>
+    <form className="p-4" onSubmit={handleSubmit}>
       <textarea
-        className="textarea-primary textarea"
+        className="textarea-primary textarea w-3/5"
         placeholder="Your Comment"
         name="text"
         onChange={handleChange}
         value={newComment.text}
       ></textarea>
-      <button className="btn" type="submit">
+      <br />
+      <button className="btn btn-primary mt-2" type="submit">
         submit
       </button>
     </form>

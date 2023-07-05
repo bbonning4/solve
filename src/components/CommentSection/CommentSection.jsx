@@ -35,6 +35,7 @@ export default function CommentSection({ postId, isProfile, updated, setUpdated 
         comments={comments}
         setComments={setComments}
       />
+      <div className="divider"></div>
       {comments.length ? commentList : <p>No comments, yet</p>}
     </>
   );

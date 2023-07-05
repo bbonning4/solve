@@ -56,7 +56,7 @@ export default function PostPage({ post, setPost }) {
           posted on {new Date(post.updatedAt).toLocaleDateString()}
         </p>
         <div className="divider"></div>
-        <div className={`${post.answered ? 'bg-neutral' : ''}`}>
+        <div className={`flex flex-col items-center justify-center ${post.answered ? 'bg-neutral' : ''} p-4`}>
           <img src={post.image} alt="image of problem" />
           <p className="text-left">
             <MathJax>{post.text}</MathJax>

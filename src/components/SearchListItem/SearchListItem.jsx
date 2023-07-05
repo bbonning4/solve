@@ -5,13 +5,13 @@ export default function SearchListItem({ image, text, updatedAt, answered }) {
     <div
       className={`flex ${
         answered ? "bg-neutral" : "bg-base-100"
-      } justify-between`}
+      } justify-between p-4`}
     >
       {image ? <img src={image}></img> : <p>[No Image]</p>}
-      <p className="text-left">
+      <div className="text-left">
         <MathJax>{text}</MathJax>
-      </p>
-      <h1 className="text-right">{updatedAt}</h1>
+      </div>
+      <div className="text-right">{updatedAt}</div>
     </div>
   );
 }
