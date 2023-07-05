@@ -5,14 +5,11 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 export default function AuthPage({ setUser }) {
   const [showSignUp, setShowSignUp] = useState(false);
   return (
-    <main className="card flex flex-col items-center justify-center">
-      <button className="btn" onClick={() => setShowSignUp(!showSignUp)}>
-        {showSignUp ? "Log In" : "Sign Up"}
-      </button>
+    <main>
       {showSignUp ? (
-        <SignUpForm setUser={setUser} />
+        <SignUpForm setUser={setUser} showSignUp={showSignUp} setShowSignUp={setShowSignUp} />
       ) : (
-        <LoginForm setUser={setUser} />
+        <LoginForm setUser={setUser} showSignUp={showSignUp} setShowSignUp={setShowSignUp} />
       )}
     </main>
   );
