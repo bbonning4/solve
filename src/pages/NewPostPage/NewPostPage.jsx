@@ -27,7 +27,6 @@ export default function NewPostPage({ post, setPost }) {
 
   return (
     <>
-      <h1>NewPostPage</h1>
       {postCreated ? (
         <Navigate to={`/posts/${postId}`} replace />
       ) : (

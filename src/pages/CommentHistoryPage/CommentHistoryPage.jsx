@@ -18,7 +18,7 @@ export default function CommentHistoryPage() {
     <div key={comment._id}>
       <Link to={`/posts/${comment.post}`}>
         <CommentListItem
-          text={comment.text}
+          comment={comment}
           updatedAt={new Date(comment.updatedAt).toLocaleDateString()}
         />
       </Link>
