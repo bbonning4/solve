@@ -30,7 +30,7 @@ export default function PostHistoryPage() {
     <>
     <div className="card flex flex-col items-center justify-center">
       <div className="card-content m-5 rounded border-solid border-white bg-neutral p-8">
-        <Link to="/posts/new" className="btn bg-primary">
+        <Link to="/posts/new" className="btn btn-primary">
           New Post
         </Link>
       </div>
